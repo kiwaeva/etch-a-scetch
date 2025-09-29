@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+#container{
+    display: flex;
+    flex-wrap:wrap;
+    background-color: rgb(238, 146, 187);
+    
+}
+
+#container>div{
+    border: 1px solid black;
+    height: 50px;
+    width:50px;
+    margin: 5px;
+}
