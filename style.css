@@ -4,17 +4,15 @@
 
 #container{
     display: flex;
-    justify-content: center;
-    flex-wrap:wrap;
-    max-width: 500px;
+    flex-wrap: wrap;
+    width: 960px;
+    height: 960px;
     background-color: rgb(238, 146, 187);
 }
 
-#container>div{
+#container > div{
     border: 1px solid black;
-    height: 30px;
-    width:30px;
-    margin: 0.5px;
+    box-sizing: border-box;
 }
 
 .color-change{

@@ -1,38 +1,37 @@
 const container = document.querySelector('#container')
 
-//add 16 x 16 divs
+//Function to create grid without changing the total amount of px
+const createGrid = (num) => {
+    container.innerHTML = ""; //Clear existing squares
+    const squareSize = 960 / num; // each swuare's width & height in px
 
-  for (let i = 0; i < 256; i++) {
-    const newDiv = document.createElement('div');
-    newDiv.addEventListener('mouseenter', (e) => {
-      e.target.classList.add('color-change');
-    });
-    container.appendChild(newDiv);
-  }
+    for(let i = 0; i < num * num; i++){
+        const square = document.createElement('div');
+        square.style.width = `${squareSize}px`;
+        square.style.height = `${squareSize}px`;
 
-//create a popup to ask for a number
+        square.addEventListener('mouseenter', (e) => {
+            e.target.classList.add('color-change');
+        });
+
+        container.appendChild(square);
+    }
+}
+
+//Initial grid 16x16
+createGrid(16);
+
+//Button click popup with input for the number
 
 const button = document.querySelector('#button');
 
-button.addEventListener('click', (e) => {
+button.addEventListener('click', () => {
     const num = parseInt(prompt('What number of squares do you want in your new grid?'));
 
-    if (isNaN(num) || num <= 0 || num > 19) {
-    alert('Please enter a valid positive number that is less than 20.');
+    if (isNaN(num) || num <= 0 || num > 64) {
+    alert('Please enter a valid number between 1 and 64.');
     return;
 }
 
-//Clear existing grid
-container.innerHTML = "";
-
-for (let i = 0; i < num * num; i++){
-    const createGrid = document.createElement('div');
-    createGrid.addEventListener('mouseenter',(e) =>{
-        e.target.classList.add('color-change');
-    });
-
-        container.appendChild(createGrid);
-    }
-    // Adjust grid layout (CSS required for this to work visually)
-  container.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
+    createGrid(num)
 });
